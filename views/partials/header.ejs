@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>argue.me</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-default change">
+            <div class="container-fluid">
+                <div class="navbar-header"> <% /* NavBar Header */ %>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tocollapse" aria-expanded="false"> <% /* Hamburguer Icon */ %>
+                        <span style="background-color: white" class="icon-bar"></span>
+                        <span style="background-color: white" class="icon-bar"></span>
+                        <span style="background-color: white" class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" id="custombrand" href="/">argue.me</a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="tocollapse">
+                    
+                    <p class="navbar-text" style="color: #FFFFFF">A place to just talk... about anything.</p>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if(!currentUser){ %>
+                            <li><a style="color: #FFFFFF" href="/login">Login</a></li>
+                            <li><a style="color: #FFFFFF" href="/register">Sign Up</a></li>    
+                        <% } else { %>
+                            <li><a style="color: #FFFFFF" href="#">Signed In as <%= currentUser.username %></a></li>
+                            <li><a style="color: #FFFFFF" href="/logout">Logout</a></li>
+                        <% } %>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <% if(error && error.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <% if(success && success.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
+        </div>

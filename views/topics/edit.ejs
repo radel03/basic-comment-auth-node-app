@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h3 style="text-align: center">Edit <%= topic.topic %></h3>
+        <div style="width: 40%; margin: 0 auto">
+            <div class="well">
+                <form action="/topics/<%= topic._id %>?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="topic[topic]" value="<%= topic.topic %>" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="12" name="topic[text]" required><%= topic.text %></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="topic[image]" value="<%= topic.image %>">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-lg btn-primary btn-block">Update</button>
+                    </div>
+                </form>
+            </div>
+            <a href="/topics">Back to Wall</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,38 @@
+.change {
+    background-color: #295479;
+}
+
+#custombrand {
+    color: #FFFFFF;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 30px;
+}
+
+body {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 1.4em;
+}
+
+#eachtopic {
+    width: 50%; 
+    margin: 25px auto;
+}
+
+
+@media screen and (max-width:1199px) {
+  #eachtopic {
+      width: 60%;
+  }
+}
+
+@media screen and (max-width:992px) {
+  #eachtopic {
+      width: 70%;
+  }
+}
+
+@media screen and (max-width:992px) {
+  #eachtopic {
+      width: 75%;
+  }
+}

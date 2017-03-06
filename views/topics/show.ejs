@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div style="width: 70%; margin: 25px auto">
+            <h2 style="text-align: center; font-weight: bold"><%= topic.topic %></h2>
+        </div>
+        <div style="width: 70%; margin: 25px auto">
+            <div class="well">
+                <p><%= topic.text %></p>
+                <img style="width: 100%" src="<%= topic.image %>">
+                
+                <div style="margin-top: 10px">
+                    <div style="float: left">Submitted by <em><%= topic.author.username %></em></div>
+                    
+                    <% if(currentUser && topic.author.id.equals(currentUser._id)){ %>
+                        <div style="float: right; margin: 10px 5px"><a class="btn btn-primary btn-md" href="/topics/<%= topic._id %>/edit">Edit Topic</a></div>
+                        <div style="float: right; margin: 10px 5px">
+                            <form action="/topics/<%= topic._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger btn-md">Delete Post</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <hr style="clear: both">
+                
+                <div style="margin-top: 10px">
+                    <div style="text-align: right; margin-bottom: 10px">
+                        <a style="font-weight: bold" class="btn btn-primary btn-lg" href="/topics/<%= topic._id %>/comments/new">Comment</a>
+                    </div>
+                </div>
+                
+                <% topic.comments.forEach(function(comment){ %></h1>
+                    <div style="margin-top: 15px">
+                        <p><strong><%= comment.author.username %></strong> - <%= comment.text %></p>
+                        
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <div style="float: left; margin: 5px 5px"><a class="btn btn-sm btn-primary" href="/topics/<%= topic._id %>/comments/<%= comment._id %>/edit">Edit Comment</a></div>
+                            <div style="float: left; margin: 5px 5px">
+                                <form action="/topics/<%= topic._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-danger btn-sm">Delete Comment</button>
+                                </form>
+                            </div>
+                        <% } %>
+                        <hr style="clear: both">
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

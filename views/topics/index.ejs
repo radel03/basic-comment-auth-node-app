@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div style="width: 50%; margin: 25px auto">
+            <h2 style="text-align: center"><a class="btn btn-lg btn-primary btn-block" style="font-weight: bold; white-space: normal" href="/topics/new">Create a New Topic to Argue</a></h2>
+        </div>
+        <div id="eachtopic">
+            <% topics.forEach(function(topic){ %>  
+                <div class="well">
+                    <a href="/topics/<%= topic._id %>">
+                        <img style="width: 100%" src="<%= topic.image %>">
+                    </a>
+                    <h4 style="font-weight: bold"><%= topic.topic %></h4>
+                    <p><%= topic.text.substring(0, 500) %> ... <a href="/topics/<%= topic._id %>"><em>See more</em></a></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
+
