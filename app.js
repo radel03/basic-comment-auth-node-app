@@ -17,7 +17,9 @@ indexRoutes = require("./routes/index");
 
 mongoose.Promise = global.Promise;   //new issue solution at: http://stackoverflow.com/questions/38138445/node3341-deprecationwarning-mongoose-mpromise
 
-mongoose.connect("mongodb://localhost/argue_me");
+//mongoose.connect("mongodb://localhost/argue_me");
+mongoose.connect("mongodb://user1:password@ds119750.mlab.com:19750/argueme");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
